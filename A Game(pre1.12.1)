@@ -1,27 +1,27 @@
+/*Press wasd to move yourself*/
 #include <iostream>
 #include <stdlib.h>
 #include <time.h>
 #include <conio.h>
 #include <windows.h>
 using namespace std;
-char c;
+char c,skin;
 char Map_1[8][8]={
-{'@','#','#','0','#','0','0','0'},{'0','0','0','0','0','0','#','0'},
+{'S','#','#','0','#','0','0','0'},{'0','0','0','0','0','0','#','0'},
 {'#','0','#','#','#','#','0','0'},{'0','0','#','0','0','0','#','0'},
 {'#','0','0','0','#','0','0','0'},{'0','0','#','0','0','#','0','#'},
 {'#','0','#','#','0','0','0','0'},{'#','0','0','0','#','0','#','E'}};
 char Map_2[8][8]={
-{'@','0','0','0','0','#','#','0'},{'0','#','#','0','#','#','0','0'},
+{'S','0','0','0','0','#','#','0'},{'0','#','#','0','#','#','0','0'},
 {'0','0','#','0','0','0','0','#'},{'#','0','0','0','#','#','0','#'},
 {'0','0','#','0','0','#','0','0'},{'#','0','#','#','0','0','0','#'},
 {'0','0','#','0','0','#','0','#'},{'#','0','0','0','#','#','0','E'}};
-
 int b1[10][10],c1[105],d1[105],sum;
 int a=7,b=7;
 bool defind(int i,int j,char Map[8][8]){
 	for(i=0;i<8;i++)
 	for(j=0;j<8;j++)
-	if(Map[i][j]=='@')return true;
+	if(Map[i][j]==skin)return true;
 	return false;
 }
 void out(char Map[8][8]){
@@ -40,27 +40,27 @@ void out(char Map[8][8]){
 			if(c=='w'&&Map[tx-1][ty]!='#'){
 				Map[tx][ty]='0';
 				tx-=1;
-				Map[tx][ty]='@';
+				Map[tx][ty]=skin;
 			}
 			if(c=='s'&&Map[tx+1][ty]!='#'){
 				Map[tx][ty]='0';
 				tx+=1;
-				Map[tx][ty]='@';
+				Map[tx][ty]=skin;
 			}
 			if(c=='a'&&Map[tx][ty-1]!='#'){
 				Map[tx][ty]='0';
 				ty-=1;
-				Map[tx][ty]='@';
+				Map[tx][ty]=skin;
 			}
 			if(c=='d'&&Map[tx][ty+1]!='#'){
 				Map[tx][ty]='0';
 				ty+=1;
-				Map[tx][ty]='@';
+				Map[tx][ty]=skin;
 			}
 			system("cls");
-			if(Map[a][b]=='@'){
+			if(Map[a][b]==skin){
 				double s=clock()-t;
-				printf("Game over!\nUsed %d Moves.\nUsed %.2lf seconds.\n",fop,s/60);
+				printf("Game over!\nUsed %d Moves.\nUsed %.2lf seconds.\n",fop,s/30-2);
 				printf("Press shift+r to restart.Others to back the Main.\n");
 				return;
 			}
@@ -71,26 +71,29 @@ void out(char Map[8][8]){
 		}
 }void motto()
 {
-	system("color 8a");
-	printf("|===================================Main======================================|\n"); 
+	system("color 0a"); //choose for yourself!
+	printf("|===================================Main======================================|\n");
 	printf("|Version : Pre 1.12.1                                 感谢游玩                |\n");
 	printf("|W: Up S: Down A: Left D: Right               制作人：YaMi  校准：YaMi        |\n");
 	printf("|**更新内容：                                      遇到问题请上传至：         |\n");
-	printf("|1.新增地图2                                      qy0201@outlook.com          |\n");
-	printf("|2.新增返回主页面设定。                           ~~~~~~~~~~~~~~~~~~          |\n");
-	printf("|3.修改了主页面风格。                                                         |\n");
+	printf("|1.新增地图3                                      qy0201@outlook.com          |\n");
+	printf("|2.修改了cmd 颜色                                 ~~~~~~~~~~~~~~~~~~          |\n");
+	printf("|3.可自加skin                                                                 |\n");
 	printf("|Press 1 to start Stage 1.                            敬请期待......          |\n");
 	printf("|Press 2 to start Stage 2.                                                    |\n");
 	printf("|=============================================================================|\n");
+	printf("plz press any keyboard to be your skin.\n");
+	skin=getch();
+	printf("skin:%c\nPress the number to start game.\n",skin);
 	if(getch()=='1'){
 		out(Map_1);
 		while(getch()=='R')
 		{
-			Map_1[0][0]='@';
+			Map_1[0][0]=skin;
 			Map_1[7][7]='E';
 			out(Map_1);
 		}
-		Map_1[0][0]='@';
+		Map_1[0][0]=skin;
 		Map_1[7][7]='E';
 		system("cls");
 		motto();
@@ -99,12 +102,25 @@ void out(char Map[8][8]){
 		out(Map_2);
 		while(getch()=='R')
 		{
-			Map_2[0][0]='@';
+			Map_2[0][0]=skin;
 			Map_2[7][7]='E';
 			out(Map_2);
 		}
-		Map_2[0][0]='@';
+		Map_2[0][0]=skin;
 		Map_2[7][7]='E';
+		system("cls");
+		motto();
+	}
+	else {
+		out(Map_1);
+		while(getch()=='R')
+		{
+			Map_1[0][0]=skin;
+			Map_1[7][7]='E';
+			out(Map_1);
+		}
+		Map_1[0][0]=skin;
+		Map_1[7][7]='E';
 		system("cls");
 		motto();
 	}
