@@ -1,4 +1,4 @@
-# A-GAME-Pre-1.12.2
+# A-GAME-Beta-1.12.7
 Hey ,It's me.
 This is ,my first program,hope you can enjoy it.
 then , if you have any questions, plz send to qy0201@outlook.com ,I will check it
